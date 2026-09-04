@@ -19,12 +19,19 @@ jobs:
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
+        with:
+            node-version: "24.x"
 
-      - name: Setup
-        run: make setup
+      - run: make setup
+      - run: make lint
+      - run: make test
+        
+
 
       - name: Cypress run 
         uses: cypress-io/github-action@v7
+        with:
+            install: false
    
 
       - name: Print Hello from Hexlet
